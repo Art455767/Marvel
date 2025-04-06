@@ -3,16 +3,19 @@ package com.example.marvel.presentation.ui
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.marvel.R
 import com.example.marvel.presentation.adapters.CharacterAdapter
-import com.example.marvel.presentation.viewmodels.CharacterViewModel
+import com.example.marvel.presentation.viewmodel.CharacterViewModel
 import com.example.marvel.utils.generateHash
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
     private lateinit var recyclerView: RecyclerView
     private lateinit var characterAdapter: CharacterAdapter
     private val characterViewModel: CharacterViewModel by viewModels()
@@ -36,9 +39,11 @@ class MainActivity : AppCompatActivity() {
 
         characterViewModel.loadCharacters(ts, publicKey, hash, offset, limit)
 
-        characterViewModel.characters.observe(this) { response ->
-            response?.data?.results?.let { characters ->
-                characterAdapter.submitList(characters)
+        lifecycleScope.launch {
+            characterViewModel.characters.collect { response ->
+                response?.data?.results?.let { characters ->
+                    characterAdapter.submitList(characters)
+                }
             }
         }
     }

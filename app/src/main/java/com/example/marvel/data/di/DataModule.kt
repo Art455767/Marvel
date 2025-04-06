@@ -1,8 +1,8 @@
 package com.example.marvel.data.di
 
 import com.example.marvel.data.api.MarvelApi
-import com.example.marvel.data.repositories.CharacterRepository
-import com.example.marvel.domain.repositories.CharacterRepository as DomainCharacterRepository
+import com.example.marvel.data.repositories.CharacterRepositoryImpl
+import com.example.marvel.domain.repositories.CharacterRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,8 +14,8 @@ import retrofit2.Retrofit
 object DataModule {
 
     @Provides
-    fun provideCharacterRepository(api: MarvelApi): DomainCharacterRepository {
-        return CharacterRepository(api)
+    fun provideCharacterRepository(api: MarvelApi): CharacterRepository {
+        return CharacterRepositoryImpl(api)
     }
 
     @Provides

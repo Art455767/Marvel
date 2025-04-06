@@ -2,8 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-kapt")
-    id("dagger.hilt.android.plugin")
-
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -20,18 +19,28 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    kapt {
+        correctErrorTypes = true
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     kotlinOptions {
         jvmTarget = "11"
+    }
+
+    buildFeatures {
+        dataBinding = true
     }
 }
 
@@ -52,13 +61,8 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
     implementation(libs.androidx.hilt.lifecycle.viewmodel)
-    implementation(libs.hilt.android.gradle.plugin.v244)
-    implementation(libs.hilt.android.v244)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.livedata.ktx)
-
-    kapt(libs.hilt.compiler.v244)
-
-
-
+    implementation(libs.hilt.android.v2561)
+    implementation(libs.hilt.android.gradle.plugin.v2561)
 }

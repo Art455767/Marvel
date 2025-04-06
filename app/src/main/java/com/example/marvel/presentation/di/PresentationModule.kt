@@ -1,6 +1,6 @@
 package com.example.marvel.presentation.di
 
-import com.example.marvel.domain.repositories.CharacterRepositoryImpl
+import com.example.marvel.domain.repositories.CharacterRepository
 import com.example.marvel.domain.usecases.GetCharactersUseCase
 import dagger.Module
 import dagger.Provides
@@ -12,7 +12,7 @@ import dagger.hilt.components.SingletonComponent
 object PresentationModule {
 
     @Provides
-    fun provideGetCharactersUseCase(repository: CharacterRepositoryImpl): GetCharactersUseCase {
+    fun provideGetCharactersUseCase(repository: CharacterRepository): GetCharactersUseCase {
         return GetCharactersUseCase(repository)
     }
 }

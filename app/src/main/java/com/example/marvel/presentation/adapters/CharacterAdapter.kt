@@ -40,7 +40,7 @@ class CharacterAdapter : ListAdapter<Character, CharacterAdapter.CharacterViewHo
     // DiffUtil для оптимизации обновления списка
     class CharacterDiffCallback : DiffUtil.ItemCallback<Character>() {
         override fun areItemsTheSame(oldItem: Character, newItem: Character): Boolean {
-            return oldItem.name == newItem.name // или используйте уникальный идентификатор, если он есть
+            return oldItem.name == newItem.name
         }
 
         override fun areContentsTheSame(oldItem: Character, newItem: Character): Boolean {
