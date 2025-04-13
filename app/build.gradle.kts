@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-kapt")
-    id("com.google.dagger.hilt.android")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -55,14 +55,17 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.glide)
     implementation(libs.androidx.recyclerview)
+    implementation(libs.filament.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
-    implementation(libs.androidx.hilt.lifecycle.viewmodel)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.androidx.lifecycle.livedata.ktx)
+
+    // Hilt dependencies
     implementation(libs.hilt.android.v2561)
-    implementation(libs.hilt.android.gradle.plugin.v2561)
+    kapt(libs.hilt.android.compiler)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx.v231)
+    implementation(libs.androidx.lifecycle.livedata.ktx.v231)
+    implementation (libs.androidx.fragment.ktx)
+    implementation (libs.androidx.lifecycle.runtime.ktx.v231)
+
 }

@@ -12,13 +12,14 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CharacterViewModel @Inject constructor(private val getCharactersUseCase: GetCharactersUseCase) : ViewModel() {
+
     private val _characters = MutableStateFlow<CharacterResponse?>(null)
     val characters: StateFlow<CharacterResponse?> get() = _characters
 
-    fun loadCharacters(ts: String, publicKey: String, hash: String, offset: Int, limit: Int) {
+    fun fetchCharacters(ts: String, publicKey: String, hash: String, offset: Int, limit: Int) {
         viewModelScope.launch {
-            getCharactersUseCase.execute(ts, publicKey, hash, offset, limit).collect { response ->
-                _characters.value = response
+            getCharactersUseCase.execute(ts, publicKey, hash, offset, limit).collect { characterResponse ->
+                _characters.value = characterResponse
             }
         }
     }
