@@ -45,6 +45,8 @@ android {
 }
 
 dependencies {
+
+    implementation(project(":domain"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -59,13 +61,14 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
-    // Hilt dependencies
     implementation(libs.hilt.android.v2561)
     kapt(libs.hilt.android.compiler)
     implementation(libs.androidx.lifecycle.viewmodel.ktx.v231)
     implementation(libs.androidx.lifecycle.livedata.ktx.v231)
     implementation (libs.androidx.fragment.ktx)
     implementation (libs.androidx.lifecycle.runtime.ktx.v231)
+    kapt(libs.hilt.compiler)
+    implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx.v231)
 
 }

@@ -1,10 +1,12 @@
 [versions]
 agp = "8.7.3"
+coreKtxVersion = "1.13.1"
 fragmentKtx = "1.8.6"
 glide = "4.16.0"
 googleHiltAndroid = "2.52"
 googleHiltAndroidGradlePlugin = "2.56.1"
 googleHiltAndroidVersion = "2.56.1"
+googleHiltCompiler = "2.56.1"
 hiltAndroid = "2.52"
 hiltAndroidGradlePlugin = "2.52"
 hiltAndroidVersion = "2.52"
@@ -35,6 +37,7 @@ filamentAndroid = "1.17.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-core-ktx-v1131 = { module = "androidx.core:core-ktx", version.ref = "coreKtxVersion" }
 androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtx" }
 androidx-hilt-lifecycle-viewmodel = { module = "androidx.hilt:hilt-lifecycle-viewmodel", version.ref = "hiltLifecycleViewmodel" }
 androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleRuntimeKtx" }
@@ -58,6 +61,7 @@ hilt-android-v244 = { module = "com.google.dagger:hilt-android", version.ref = "
 hilt-android-v2561 = { module = "com.google.dagger:hilt-android", version.ref = "googleHiltAndroidVersion" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltAndroid" }
 hilt-compiler-v244 = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltCompiler" }
+hilt-compiler-v2561 = { module = "com.google.dagger:hilt-compiler", version.ref = "googleHiltCompiler" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -83,4 +87,5 @@ filament-android = { group = "com.google.ar.sceneform", name = "filament-android
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+android-library = { id = "com.android.library", version.ref = "agp" }
 

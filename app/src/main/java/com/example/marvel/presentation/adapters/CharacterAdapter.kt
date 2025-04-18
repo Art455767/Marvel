@@ -1,5 +1,6 @@
 package com.example.marvel.presentation.adapters
 
+import com.domain.models.Character
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.marvel.R
-import com.example.marvel.data.models.Character
 
 class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
 
@@ -42,7 +42,6 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHold
             nameTextView.text = character.name
             descriptionTextView.text = character.description.ifEmpty { "No description available" }
             val imageUrl = "${character.thumbnail.getImageUrl()}.${character.thumbnail.getExtensionValue()}"
-//            val imageUrl = character.thumbnail.getImageUrl() + "/portrait_xlarge." + character.thumbnail.getExtensionValue()
 
             Glide.with(itemView.context)
                 .load(imageUrl)
@@ -53,7 +52,7 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHold
     class CharacterDiffCallback(
         private val oldList: List<Character>,
         private val newList: List<Character>,
-    ) : DiffUtil.Callback() {
+        ) : DiffUtil.Callback() {
         override fun getOldListSize(): Int = oldList.size
         override fun getNewListSize(): Int = newList.size
 

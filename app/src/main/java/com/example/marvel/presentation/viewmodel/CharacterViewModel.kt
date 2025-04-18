@@ -2,8 +2,8 @@ package com.example.marvel.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.marvel.data.models.CharacterResponse
-import com.example.marvel.domain.usecases.GetCharactersUseCase
+import com.domain.usecases.GetCharactersUseCase
+import com.domain.models.CharacterResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
