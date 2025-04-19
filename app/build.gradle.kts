@@ -27,8 +27,15 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            buildConfigField("String", "PUBLIC_KEY", "\"bf0b527468ed482a1340992bc7039cf7\"")
+            buildConfigField("String", "PRIVATE_KEY", "\"d31130b3cfa56235a59c7d1e11cf1ff477d332bd\"")
+        }
+        debug {
+            buildConfigField("String", "PUBLIC_KEY", "\"bf0b527468ed482a1340992bc7039cf7\"")
+            buildConfigField("String", "PRIVATE_KEY", "\"d31130b3cfa56235a59c7d1e11cf1ff477d332bd\"")
         }
     }
+
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -41,11 +48,13 @@ android {
 
     buildFeatures {
         dataBinding = true
+        buildConfig = true
     }
 }
 
 dependencies {
 
+//    implementation(project(":data"))
     implementation(project(":domain"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -68,7 +77,9 @@ dependencies {
     implementation (libs.androidx.fragment.ktx)
     implementation (libs.androidx.lifecycle.runtime.ktx.v231)
     kapt(libs.hilt.compiler)
-    implementation(libs.androidx.fragment.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx.v231)
+    implementation ("com.google.dagger:hilt-android:2.56.1")
+    kapt ("com.google.dagger:hilt-android-compiler:2.56.1")
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
 
 }

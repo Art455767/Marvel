@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.marvel.R
 import com.example.marvel.presentation.adapters.CharacterAdapter
 import com.example.marvel.presentation.viewmodel.CharacterViewModel
-import com.example.marvel.utils.generateHash
+import com.example.marvel.utils.ApiKeys
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -18,13 +18,6 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list) {
 
     private val viewModel: CharacterViewModel by viewModels()
     private lateinit var adapter: CharacterAdapter
-    private var offset = 0
-    private val limit = 20
-
-    private val ts = "1"
-    private val publicKey = "bf0b527468ed482a1340992bc7039cf7"
-    private val privateKey = "d31130b3cfa56235a59c7d1e11cf1ff477d332bd"
-    private val hash = generateHash(ts, privateKey, publicKey)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,7 +34,10 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list) {
                 }
             }
         }
-        viewModel.fetchCharacters(ts, publicKey, hash, offset, limit)
-
+        viewModel.fetchCharacters(
+            ts = "1",
+            publicKey = ApiKeys.getPublicKey(),
+            privateKey = ApiKeys.getPrivateKey()
+        )
     }
 }

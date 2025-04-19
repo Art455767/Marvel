@@ -1,15 +1,17 @@
 package com.example.marvel.presentation.ui
 
-import android.annotation.SuppressLint
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.marvel.R
 import com.example.marvel.presentation.fragment.CharacterListFragment
+import com.example.marvel.presentation.viewmodel.CharacterViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    @SuppressLint("CommitTransaction")
+    private val viewModel: CharacterViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

@@ -44,5 +44,9 @@ dependencies {
     kapt(libs.hilt.compiler.v2561)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
-    
+    kapt(libs.hilt.android.compiler)
+    implementation ("com.google.dagger:hilt-android:2.56.1")
+    kapt ("com.google.dagger:hilt-android-compiler:2.56.1")
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
 }

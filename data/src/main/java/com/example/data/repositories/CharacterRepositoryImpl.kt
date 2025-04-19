@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-
 class CharacterRepositoryImpl @Inject constructor(private val api: MarvelApi) : CharacterRepository {
     override suspend fun getCharacters(
         ts: String,

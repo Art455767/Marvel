@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
 @InstallIn(SingletonComponent::class)
-object provideRetrofit {
+object RetrofitModule {
 
     @Provides
     fun provideRetrofit(): Retrofit {

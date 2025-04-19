@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.domain.usecases.GetCharactersUseCase
 import com.domain.models.CharacterResponse
+import com.example.marvel.utils.generateHash
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,9 +17,10 @@ class CharacterViewModel @Inject constructor(private val getCharactersUseCase: G
     private val _characters = MutableStateFlow<CharacterResponse?>(null)
     val characters: StateFlow<CharacterResponse?> get() = _characters
 
-    fun fetchCharacters(ts: String, publicKey: String, hash: String, offset: Int, limit: Int) {
+    fun fetchCharacters(ts: String, publicKey: String, privateKey: String) {
+        val hash = generateHash(ts, privateKey, publicKey)
         viewModelScope.launch {
-            getCharactersUseCase.execute(ts, publicKey, hash, offset, limit).collect { characterResponse ->
+            getCharactersUseCase.execute(ts, publicKey, hash, 0, 10).collect { characterResponse ->
                 _characters.value = characterResponse
             }
         }
