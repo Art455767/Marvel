@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.marvel.R
 import com.example.marvel.presentation.adapters.CharacterAdapter
 import com.example.marvel.presentation.viewmodel.CharacterViewModel
-import com.example.marvel.utils.ApiKeys
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -34,10 +33,6 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list) {
                 }
             }
         }
-        viewModel.fetchCharacters(
-            ts = "1",
-            publicKey = ApiKeys.getPublicKey(),
-            privateKey = ApiKeys.getPrivateKey()
-        )
+        viewModel.loadCharacters()
     }
 }

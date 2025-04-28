@@ -39,13 +39,13 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHold
         private val imageView: ImageView = itemView.findViewById(R.id.image_character)
 
         fun bind(character: Character) {
-            nameTextView.text = character.name
-            descriptionTextView.text = character.description.ifEmpty { "No description available" }
-            val imageUrl = "${character.thumbnail.getImageUrl()}.${character.thumbnail.getExtensionValue()}"
+                nameTextView.text = character.name
+                descriptionTextView.text = character.description.ifEmpty { "No description available" }
+                val imageUrl = "${character.thumbnail.getImageUrl()}.${character.thumbnail.getExtensionValue()}"
 
-            Glide.with(itemView.context)
-                .load(imageUrl)
-                .into(imageView)
+                Glide.with(itemView.context)
+                    .load(imageUrl)
+                    .into(imageView)
         }
     }
 }
