@@ -14,7 +14,7 @@ object RetrofitModule {
     @Provides
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://gateway.marvel.com")
+            .baseUrl("https://gateway.marvel.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
