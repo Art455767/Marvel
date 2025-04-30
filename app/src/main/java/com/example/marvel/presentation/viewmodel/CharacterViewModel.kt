@@ -19,15 +19,18 @@ class CharacterViewModel @Inject constructor(private val getCharactersUseCase: G
     val characters: StateFlow<CharacterResponse?> get() = _characters
 
     fun loadCharacters() {
-        val ts = "1"
+        val ts = System.currentTimeMillis().toString()
         val publicKey = ApiKeys.getPublicKey()
         val privateKey = ApiKeys.getPrivateKey()
 
         val hash = generateHash(ts, privateKey, publicKey)
         viewModelScope.launch {
-
-            getCharactersUseCase.execute(ts, publicKey, hash, 0, 10).collect { characterResponse ->
-                _characters.value = characterResponse
+            try {
+                getCharactersUseCase.execute(ts, publicKey, hash, 0, 10).collect { characterResponse ->
+                    _characters.value = characterResponse
+                }
+            } catch (e: Exception) {
+                // TODO обработать ошибку
             }
         }
     }
